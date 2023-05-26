@@ -18,30 +18,35 @@ Access with https://t.me/zombierebel_bot
     cd kbot
 ```
 
-3. Create a Telegram bot with BotFather:
+3. Make a build specifying target OS and architecture (`linux` and `arm64` are used by default):
+   ```
+   make build TARGET_OS={YOUR_OS} TARGET_ARCH={YOUR_ARCHITECTURE}
+   ```
+
+4. Create a Telegram bot with BotFather:
    - Open Telegram and search for the BotFather bot (https://t.me/BotFather).
    - Start a chat with BotFather and use the command /newbot to create a new bot.
    - Provide a name and a username for your bot when prompted.
 
-4. Click the access token to copy it
+5. Click the access token to copy it
 
-5. Run the following command to set the access token as an environment variable, paste your access token and press Enter.
+6. Run the following command to set the access token as an environment variable, paste your access token and press Enter.
    
 ```
    read -s TELE_TOKEN
 ```   
 
-6. Export the access token as an environment variable using the following command:
+7. Export the access token as an environment variable using the following command:
 ```
    export TELE_TOKEN
 ```
 
-7. Start the application by running 
+8. Start the application by running 
  ```
     ./telegrambot start
 ```
 
-8. Test the application using the Telegram bot link provided by BotFather.
+9. Test the application using the Telegram bot link provided by BotFather.
 
 ## Accepted commands 
 help - returns help

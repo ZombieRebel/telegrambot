@@ -1,5 +1,5 @@
 APP=$(shell basename $(shell git remote get-url origin))
-REGISTRY=zombierebel
+REGISTRY=zombierebel.jfrog.io/docker
 VERSION=$(shell git describe --tags --abbrev=0)-$(shell git rev-parse --short HEAD)
 TARGET_OS=linux
 TARGETARCH=arm64
@@ -27,3 +27,4 @@ push:
 
 clean: 
 	rm -rf kbot
+	docker rmi ${REGISTRY}/${APP}:${VERSION}-${TARGETARCH}

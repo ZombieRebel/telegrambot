@@ -58,4 +58,4 @@ Kbot application will listen for incoming messages. You can interact with Kbot u
 
 The application will check the received messages and send appropriate responses back to the user.
 
-**Version 1.0.2 can process only "hello" message**
+**Version 1.0.3 can process only "hello" message**

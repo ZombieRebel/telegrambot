@@ -1,5 +1,5 @@
 APP=$(shell basename $(shell git remote get-url origin))
-REGISTRY=zombierebel.jfrog.io/docker
+REGISTRY=zombierebel
 VERSION=$(shell git describe --tags --abbrev=0)-$(shell git rev-parse --short HEAD)
 TARGET_OS=linux
 TARGET_ARCH=arm64

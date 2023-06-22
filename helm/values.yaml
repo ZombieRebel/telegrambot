@@ -4,7 +4,7 @@
 replicaCount: 1
 image:
   repository: "ZombieRebel"
-  tag: VERSION
+  tag: v1.0.4-62e3316
   arch: amd64
 secret:
   name: "kbot"

@@ -39,15 +39,10 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-
-      - name: downcase REPO
-          run: |
-            echo "REPO=${GITHUB_REPOSITORY,,}" >>${GITHUB_ENV}
-
       - name: Build&Push To Ghcr.io
         env:
           APP: "kbot"
-        run: make image push TARGETARCH=$TARGETARCH REGISTRY=ghcr.io/${{ github.actor }}
+        run: make image push TARGETARCH=$TARGETARCH REGISTRY=ghcr.io/${{ github.actor,, }}
 
       - name: Clean
         run: make clean TARGETARCH=$TARGETARCH

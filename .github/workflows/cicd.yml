@@ -42,8 +42,7 @@ jobs:
       - name: Build&Push To Ghcr.io
         env:
           APP: "kbot"
-          REGISTRY: ghcr.io
-        run: make image push TARGETARCH=$TARGETARCH
+        run: make image push TARGETARCH=$TARGETARCH REGISTRY=ghcr.io/ZombieRebel
 
       - name: Clean
         run: make clean TARGETARCH=$TARGETARCH

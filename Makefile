@@ -1,30 +1,30 @@
-APP=$(shell basename $(shell git remote get-url origin))
-REGISTRY=zombierebel
+APP := $(shell basename $(shell git remote get-url origin))
+REGISTRY := zombierebel
 VERSION=$(shell git describe --tags --abbrev=0)-$(shell git rev-parse --short HEAD)
-TARGET_OS=linux
-TARGET_ARCH=arm64
+TARGETOS=linux #linux darwin windows
+TARGETARCH=arm64 #amd64 arm64
 
-format: 
+format:
 	gofmt -s -w ./
 
-lint: 
+lint:
 	golint
 
-test: 
+test:
 	go test -v
 
 get:
 	go get
 
 build: format get
-	CGO_ENABLED=0 GOOS=${TARGET_OS} GOARCH=${TARGET_ARCH} go build -v -o kbot -ldflags "-X="github.com/ZombieRebel/telegrambot/cmd.appVersion=${VERSION}
+	CGO_ENABLED=0 GOOS=${TARGETOS} GOARCH=${TARGETARCH} go build -v -o kbot -ldflags "-X="github.com/ZombieRebel/telegrambot/cmd.appVersion=${VERSION}
 
 image:
-	docker build . -t ${REGISTRY}/${APP}:${VERSION}-${TARGET_ARCH}
+	docker build . -t ${REGISTRY}/${APP}:${VERSION}-${TARGETARCH}  --build-arg TARGETARCH=${TARGETARCH}
 
 push:
-	docker push ${REGISTRY}/${APP}:${VERSION}-${TARGET_ARCH}
+	docker push ${REGISTRY}/${APP}:${VERSION}-${TARGETARCH}
 
-clean: 
+clean:
 	rm -rf kbot
-	docker rmi ${REGISTRY}/${APP}:${VERSION}-${TARGET_ARCH}
+	docker rmi ${REGISTRY}/${APP}:${VERSION}-${TARGETARCH}

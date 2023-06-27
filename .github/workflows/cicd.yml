@@ -39,6 +39,13 @@ jobs:
           APP: "kbot"
           REGISTRY: ${{ secrets.DOCKERHUB_USERNAME }}
         run: make image push TARGETARCH=$TARGETARCH
+
+      - name: Build&Push To Ghcr.io
+        env:
+          APP: "kbot"
+          REGISTRY: ${{ github.actor }}
+        run: make image push TARGETARCH=$TARGETARCH
+
       - name: Clean
         run: make clean TARGETARCH=$TARGETARCH
       
